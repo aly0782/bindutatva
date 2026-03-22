@@ -233,6 +233,93 @@
     .footer-links a:hover { color: var(--gold); }
     .footer-copy { font-size: 0.72rem; color: rgba(155,147,184,0.35); font-family: var(--font-head); letter-spacing: 0.1em; }
 
+    /* ── DETAIL MODAL ── */
+    .detail-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(13,12,26,0.95);
+      backdrop-filter: blur(12px);
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s;
+      overflow-y: auto;
+    }
+    .detail-overlay.open { opacity: 1; visibility: visible; }
+
+    .detail-close {
+      position: fixed; top: 24px; right: 32px; z-index: 210;
+      font-family: var(--font-head); font-size: 1.6rem; color: var(--muted);
+      background: none; border: none; cursor: pointer; transition: color 0.3s;
+      line-height: 1;
+    }
+    .detail-close:hover { color: var(--gold); }
+
+    .detail-inner {
+      max-width: 960px; margin: 80px auto 60px; padding: 0 40px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: start;
+    }
+
+    .detail-gallery { position: sticky; top: 100px; }
+    .detail-main-img {
+      width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
+      border: 1px solid rgba(201,168,76,0.15);
+      background: var(--mid);
+    }
+    .detail-main-img svg { width: 100%; height: 100%; display: block; }
+    .detail-thumbs { display: flex; gap: 10px; margin-top: 12px; }
+    .detail-thumb {
+      width: 64px; height: 64px; object-fit: cover; cursor: pointer;
+      border: 1px solid rgba(201,168,76,0.15); opacity: 0.5;
+      transition: opacity 0.25s, border-color 0.25s;
+    }
+    .detail-thumb:hover, .detail-thumb.active { opacity: 1; border-color: var(--gold); }
+
+    .detail-info { padding-top: 8px; }
+    .detail-deity {
+      font-family: var(--font-head); font-size: 0.6rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold-dk); margin-bottom: 8px;
+    }
+    .detail-name {
+      font-family: var(--font-head); font-size: 1.6rem; letter-spacing: 0.05em;
+      color: var(--cream-lt); margin-bottom: 6px; line-height: 1.3;
+    }
+    .detail-subtitle {
+      font-size: 1rem; font-style: italic; color: var(--muted); margin-bottom: 28px;
+    }
+
+    .detail-section-label {
+      font-family: var(--font-head); font-size: 0.55rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .detail-story {
+      font-size: 1rem; color: rgba(245,234,216,0.7); line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .detail-specs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px;
+      margin-bottom: 32px; padding: 24px; border: 1px solid rgba(201,168,76,0.1);
+      background: rgba(201,168,76,0.02);
+    }
+    .detail-spec-item { }
+    .detail-spec-label {
+      font-family: var(--font-head); font-size: 0.55rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(155,147,184,0.5); margin-bottom: 2px;
+    }
+    .detail-spec-value { font-size: 0.95rem; color: var(--cream); }
+
+    .detail-price-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 28px; border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    .detail-price { font-family: var(--font-display); font-size: 1.8rem; color: var(--gold-lt); }
+    .detail-price-note { font-size: 0.8rem; font-style: italic; color: var(--muted); margin-top: 4px; }
+
+    @media (max-width: 768px) {
+      .detail-inner { grid-template-columns: 1fr; gap: 32px; margin-top: 60px; }
+      .detail-gallery { position: static; }
+      .detail-name { font-size: 1.3rem; }
+    }
+
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -703,6 +790,35 @@
     </div>
   </section>
 
+  <!-- ── DETAIL MODAL ── -->
+  <div class="detail-overlay" id="detail-overlay">
+    <button class="detail-close" id="detail-close" aria-label="Close">&times;</button>
+    <div class="detail-inner">
+      <div class="detail-gallery">
+        <div class="detail-main-img" id="detail-main-img"></div>
+      </div>
+      <div class="detail-info">
+        <p class="detail-deity" id="detail-deity"></p>
+        <h2 class="detail-name" id="detail-name"></h2>
+        <p class="detail-subtitle" id="detail-subtitle"></p>
+
+        <p class="detail-section-label">About This Work</p>
+        <div class="detail-story" id="detail-story"></div>
+
+        <p class="detail-section-label">Specifications</p>
+        <div class="detail-specs" id="detail-specs"></div>
+
+        <div class="detail-price-row">
+          <div>
+            <div class="detail-price" id="detail-price"></div>
+            <div class="detail-price-note" id="detail-price-note"></div>
+          </div>
+          <a href="#" class="btn-etsy" id="detail-btn" target="_blank" rel="noopener">Buy on Etsy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── FOOTER ── -->
   <footer>
     <div class="container">
@@ -719,16 +835,58 @@
     </div>
   </footer>
 
-  <!-- ── FILTER + SORT JS ── -->
+  <!-- ── FILTER + SORT + DETAIL JS ── -->
   <script>
-    // Scroll reveal
+    // ── Artwork detail data ──
+    const artworkData = {
+      'Sri Yantra': {
+        story: 'The Shri Yantra is the supreme yantra in the Tantric tradition — a visual representation of the cosmic creation itself. Its nine interlocking triangles, four pointing upward (Shiva) and five pointing downward (Shakti), form 43 smaller triangles that map the entire unfolding of consciousness into matter. This particular piece, the Navayoni configuration, was drawn over many careful hours using archival ink, each line placed by hand with meditative precision. The 16-petal outer lotus represents the fulfilment of all desires, while the bindu at the centre is the still point from which all creation emanates.',
+        specs: { Medium: 'Archival ink on paper', Paper: '400 GSM cold-pressed archival', Size: '30 × 30 cm', Frame: 'Unframed — ships flat', Lotus: '16-petal outer, 8-petal inner', Triangles: '9 interlocking (Navayoni)' }
+      },
+      'Kali Yantra': {
+        story: 'Kali Ma — the dark mother, the destroyer of illusion, the fierce compassion that strips away everything false. This Kali Yantra channels the Shakti Rupa, the form of pure creative power. The downward-pointing triangles represent Shakti\'s descent into the manifest world, while the 8-petal lotus cradles the fierce energy within a container of devotion. Each of the 108 names of Kali inscribed around the yantra is a mantra in itself — together they form a complete invocation of the goddess. This piece was drawn as an act of surrender, each stroke a prayer to the mother who liberates through destruction of the ego.',
+        specs: { Medium: 'Archival ink on paper', Paper: '400 GSM cold-pressed archival', Size: '30 × 30 cm', Frame: 'Unframed — ships flat', Lotus: '8-petal lotus', Triangles: 'Downward triangle dominant' }
+      },
+      'Ganesha Yantra': {
+        story: 'Ganesha, the remover of obstacles and lord of beginnings, is traditionally invoked before any new undertaking. This Siddhi Prada (granter of success) configuration uses a six-petal lotus surrounding an interlocking hexagram — the union of upward and downward triangles representing the balance of spiritual aspiration and material reality. Ganesha yantras are among the most auspicious to keep in a workspace or home entrance. This piece was drawn with the intention of clearing the path for whoever it finds, removing both the seen and unseen barriers that stand between a person and their purpose.',
+        specs: { Medium: 'Archival ink on paper', Paper: '400 GSM cold-pressed archival', Size: '30 × 30 cm', Frame: 'Unframed — ships flat', Lotus: '6-petal lotus', Geometry: 'Interlocking hexagram' }
+      },
+      'Lakshmi Yantra': {
+        story: 'Lakshmi is not merely the goddess of wealth — she is the embodiment of abundance in all its forms: prosperity, beauty, grace, and spiritual richness. The Shri Sampat configuration of this yantra features a 16-petal lotus, symbolising the 16 forms of desire fulfilment, surrounding a dual triangle core that balances giving and receiving. The two concentric lotus rings create a field of magnetic attraction, drawing abundance naturally to whoever meditates upon or keeps this yantra. Each petal was drawn with conscious intention, making this not just art but a consecrated geometric prayer for wholeness.',
+        specs: { Medium: 'Archival ink on paper', Paper: '400 GSM cold-pressed archival', Size: '30 × 30 cm', Frame: 'Unframed — ships flat', Lotus: '16-petal outer, 8-petal inner', Triangles: 'Dual triangle core' }
+      },
+      'Saraswati Yantra': {
+        story: 'Saraswati, goddess of knowledge, music, art, and wisdom, flows like the river she is named after — carrying the waters of creative inspiration to all who seek her. This Vidya Prada (granter of knowledge) yantra uses an eight-petal lotus enclosing a triple triangle layering, each layer representing a deeper dimension of understanding: intellectual knowledge, intuitive wisdom, and direct spiritual revelation. The geometry of this piece was drawn during early morning hours, the traditional time of Saraswati\'s grace, when the mind is clear and receptive to higher learning.',
+        specs: { Medium: 'Archival ink on paper', Paper: '400 GSM cold-pressed archival', Size: '30 × 30 cm', Frame: 'Unframed — ships flat', Lotus: '8-petal lotus', Geometry: 'Triple triangle layering' }
+      },
+      'Durga Yantra': {
+        story: 'Durga, the invincible one, is Shakti in her protective warrior form — the cosmic mother who fights the battles her children cannot fight alone. The Mahashakti configuration combines a 16-petal outer lotus (the armour of divine protection) with a navayoni inner core (the nine forms of the goddess working in concert). This was one of the most intricate pieces in the collection, each geometric layer carefully built to create a field of fierce protection and empowerment. This piece has found its collector — someone who needed Durga\'s strength at exactly the right moment.',
+        specs: { Medium: 'Archival ink on paper', Paper: '400 GSM cold-pressed archival', Size: '30 × 30 cm', Frame: 'Unframed — ships flat', Lotus: '16-petal outer', Geometry: 'Navayoni inner core' }
+      },
+      'Surya Yantra': {
+        story: 'Surya, the sun god, is the visible form of the divine — the source of all life, energy, and consciousness in the physical world. The Aditya configuration features a 12-petal lotus representing the twelve solar months and the twelve Adityas (solar deities). The central solar triangle radiates outward with ray lines, embodying the sun\'s gift of illumination that reaches all beings equally. This yantra is traditionally used for vitality, clarity of purpose, and the courage to shine fully in the world. It was drawn facing east, in alignment with the rising sun.',
+        specs: { Medium: 'Archival ink on paper', Paper: '400 GSM cold-pressed archival', Size: '30 × 30 cm', Frame: 'Unframed — ships flat', Lotus: '12-petal lotus', Geometry: 'Solar triangle with rays' }
+      },
+      'Commission': {
+        story: 'Every yantra begins with an intention. A commissioned piece is drawn specifically for you — your deity, your purpose, your energy woven into the sacred geometry from the very first line. The process begins with a conversation about which yantra calls to you and what you hope to invoke. From there, the piece is drawn over 3–4 weeks in meditative practice, each session dedicated to holding your intention. The result is a one-of-a-kind original that exists for you alone.',
+        specs: { Medium: 'Archival ink on paper', Paper: '400 GSM cold-pressed archival', Size: '30 × 30 cm', Frame: 'Unframed — ships flat', Timeline: '3–4 weeks', Process: 'Consultation + custom drawing' }
+      }
+    };
+
+    // Map card index to artwork key
+    const artworkKeys = [
+      'Sri Yantra', 'Kali Yantra', 'Ganesha Yantra', 'Lakshmi Yantra',
+      'Saraswati Yantra', 'Durga Yantra', 'Surya Yantra', 'Commission'
+    ];
+
+    // ── Scroll reveal ──
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
       { threshold: 0.08 }
     );
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Filter pills
+    // ── Filter pills ──
     const pills    = document.querySelectorAll('.pill');
     const cards    = document.querySelectorAll('.piece-card');
     const countEl  = document.getElementById('piece-count');
@@ -757,7 +915,7 @@
       });
     });
 
-    // Sort
+    // ── Sort ──
     sortSel.addEventListener('change', () => {
       const val = sortSel.value;
       const cardArr = [...cards].filter(c => c.style.display !== 'none');
@@ -769,6 +927,94 @@
         return 0;
       });
       cardArr.forEach(c => grid.appendChild(c));
+    });
+
+    // ── Detail modal ──
+    const overlay   = document.getElementById('detail-overlay');
+    const closeBtn  = document.getElementById('detail-close');
+
+    function openDetail(index) {
+      const card = cards[index];
+      const key  = artworkKeys[index];
+      const data = artworkData[key];
+      if (!data) return;
+
+      // Populate deity, name, subtitle from the card
+      document.getElementById('detail-deity').textContent    = card.querySelector('.card-deity').textContent;
+      document.getElementById('detail-name').textContent     = card.querySelector('.card-name').textContent;
+      document.getElementById('detail-subtitle').textContent = card.querySelector('.card-subtitle').textContent;
+
+      // Main image — clone the card's image content
+      const mainImg = document.getElementById('detail-main-img');
+      mainImg.innerHTML = '';
+      const cardImg = card.querySelector('.card-image');
+      const imgEl   = cardImg.querySelector('img');
+      const svgEl   = cardImg.querySelector('svg');
+      if (imgEl) {
+        const clone = imgEl.cloneNode(true);
+        clone.style.width = '100%';
+        clone.style.height = '100%';
+        clone.style.objectFit = 'cover';
+        mainImg.appendChild(clone);
+      } else if (svgEl) {
+        mainImg.appendChild(svgEl.cloneNode(true));
+      }
+
+      // Story
+      document.getElementById('detail-story').innerHTML = '<p>' + data.story + '</p>';
+
+      // Specs
+      const specsEl = document.getElementById('detail-specs');
+      specsEl.innerHTML = '';
+      for (const [label, value] of Object.entries(data.specs)) {
+        specsEl.innerHTML += '<div class="detail-spec-item"><div class="detail-spec-label">' + label + '</div><div class="detail-spec-value">' + value + '</div></div>';
+      }
+
+      // Price
+      document.getElementById('detail-price').textContent = card.querySelector('.card-price').textContent;
+      const priceNote = card.querySelector('.card-price-note');
+      document.getElementById('detail-price-note').textContent = priceNote ? priceNote.textContent : '';
+
+      // Button
+      const btn     = document.getElementById('detail-btn');
+      const cardBtn = card.querySelector('.btn-etsy');
+      const soldBtn = card.querySelector('.btn-sold');
+      if (soldBtn) {
+        btn.textContent = 'Sold';
+        btn.href = '#';
+        btn.style.opacity = '0.5';
+        btn.style.pointerEvents = 'none';
+      } else if (cardBtn) {
+        btn.textContent = cardBtn.textContent;
+        btn.href = cardBtn.href;
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetail() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Attach click to each card
+    cards.forEach((card, i) => {
+      card.addEventListener('click', (e) => {
+        // Don't open modal if clicking the buy button
+        if (e.target.closest('.btn-etsy') || e.target.closest('.btn-sold')) return;
+        openDetail(i);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeDetail);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeDetail();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDetail();
     });
   </script>
 
