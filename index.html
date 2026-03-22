@@ -208,8 +208,8 @@
     .artist { padding: 100px 0 120px; position: relative; z-index: 2; }
     .artist-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; align-items: center; }
     .artist-photo-wrap { position: relative; }
-    .artist-photo-wrap img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border: 1px solid rgba(201,168,76,0.2); filter: grayscale(20%) contrast(1.05); }
-    .artist-photo-wrap::after { content: ''; position: absolute; inset: 12px -12px -12px 12px; border: 1px solid rgba(201,168,76,0.15); z-index: -1; }
+    .artist-photo-wrap img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border: none; outline: none; box-shadow: none; filter: grayscale(20%) contrast(1.05); }
+    .artist-photo-wrap::after { content: none; }
     .artist-content .section-label, .artist-content .section-title { text-align: left; }
     .artist-name { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--gold-lt); margin-bottom: 8px; letter-spacing: 0.06em; }
     .artist-role { font-family: var(--font-head); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
