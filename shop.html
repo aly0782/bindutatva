@@ -437,7 +437,7 @@
                 <div class="card-price">₹24,500</div>
                 <div class="card-price-note">+ shipping · ships worldwide</div>
               </div>
-              <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-etsy">Buy on Etsy</a>
+              <div id='product-component-1774181963727'></div>
             </div>
           </div>
         </article>
@@ -758,6 +758,45 @@
       if (e.key === 'Escape') closeDetail();
     });
   </script>
+
+<div id='product-component-1774181963727'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'pqwrgv-21.myshopify.com',
+      storefrontAccessToken: 'b137c6c7d79eed401d6efe1280c6d568',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: '7828059684950',
+        node: document.getElementById('product-component-1774181963727'),
+        moneyFormat: 'Rs.%20%7B%7Bamount%7D%7D',
+        options: {"product":{"styles":{"product":{"@media (min-width: 601px)":{"max-width":"calc(25% - 20px)","margin-left":"20px","margin-bottom":"50px"}}},"text":{"button":"Buy Now"}},"cart":{"text":{"total":"Subtotal","button":"Checkout"}},"toggle":{}}
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
 
 </body>
 </html>
