@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Shop – Bindutatva Original Yantra Art | Hand-drawn on 400 GSM Paper</title>
+  <meta name="description" content="Browse Bindutatva's full collection of original hand-drawn yantra art on 400 GSM archival paper. Sri Yantra, Kali Yantra, Ganesha Yantra and more. Ships worldwide from India. ₹18,000–₹25,000." />
+  <link rel="canonical" href="https://bindutatva.com/shop.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:     #0d0c1a;
+      --mid:     #1e1b3a;
+      --surface: #252245;
+      --gold:    #c9a84c;
+      --gold-lt: #e8ca7a;
+      --gold-dk: #8a6a1f;
+      --cream:   #f5ead8;
+      --cream-lt:#fdf8f0;
+      --muted:   #9b93b8;
+      --font-display: 'Cinzel Decorative', serif;
+      --font-head:    'Cinzel', serif;
+      --font-body:    'Cormorant Garamond', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--ink); color: var(--cream); font-family: var(--font-body); font-size: 18px; line-height: 1.7; overflow-x: hidden; }
+
+    /* grain */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+    .divider-full { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-dk) 30%, var(--gold) 50%, var(--gold-dk) 70%, transparent); opacity: 0.4; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 0;
+      background: rgba(13,12,26,0.97);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      backdrop-filter: blur(8px);
+    }
+    nav .inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-family: var(--font-head); font-size: 1.1rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-family: var(--font-head); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-lt); }
+    .nav-cta { font-family: var(--font-head); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 10px 22px; text-decoration: none; transition: background 0.3s; }
+    .nav-cta:hover { background: var(--gold-lt); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 140px 0 60px;
+      text-align: center;
+      position: relative; z-index: 2;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .page-eyebrow { font-family: var(--font-head); font-size: 0.6rem; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: 16px; }
+    .page-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.8rem); color: var(--cream-lt); letter-spacing: 0.06em; margin-bottom: 12px; }
+    .page-sub { font-size: 1.05rem; font-style: italic; color: rgba(245,234,216,0.55); max-width: 480px; margin: 0 auto; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      padding: 32px 0;
+      position: relative; z-index: 2;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+    .filter-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .filter-label { font-family: var(--font-head); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      font-family: var(--font-head); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 8px 18px; border: 1px solid rgba(201,168,76,0.2);
+      color: var(--muted); background: transparent; cursor: pointer;
+      transition: all 0.25s;
+    }
+    .pill:hover { border-color: var(--gold); color: var(--gold); }
+    .pill.active { border-color: var(--gold); color: var(--ink); background: var(--gold); }
+
+    .sort-select {
+      font-family: var(--font-head); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+      background: transparent; border: 1px solid rgba(201,168,76,0.2);
+      color: var(--muted); padding: 8px 14px; cursor: pointer; outline: none;
+      transition: border-color 0.25s;
+    }
+    .sort-select:hover { border-color: var(--gold); }
+    .sort-select option { background: var(--mid); color: var(--cream); }
+
+    /* ── PIECE COUNT ── */
+    .piece-count { font-family: var(--font-head); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0; }
+
+    /* ── SHOP GRID ── */
+    .shop-section { padding: 52px 0 120px; position: relative; z-index: 2; }
+    .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+    /* ── PIECE CARD ── */
+    .piece-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,168,76,0.1);
+      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+      cursor: pointer;
+    }
+    .piece-card:hover {
+      border-color: rgba(201,168,76,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 32px rgba(201,168,76,0.07);
+    }
+    .piece-card.sold { opacity: 0.5; pointer-events: none; }
+
+    .card-image {
+      position: relative; aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--mid);
+    }
+
+    /* ── SOLD BADGE ── */
+    .badge-sold {
+      position: absolute; top: 16px; left: 16px; z-index: 3;
+      font-family: var(--font-head); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+      background: rgba(13,12,26,0.9); color: var(--muted);
+      border: 1px solid rgba(155,147,184,0.3);
+      padding: 5px 12px;
+    }
+    .badge-new {
+      position: absolute; top: 16px; left: 16px; z-index: 3;
+      font-family: var(--font-head); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+      background: var(--gold); color: var(--ink);
+      padding: 5px 12px;
+    }
+
+    /* Photo placeholder — replace src with real photos */
+    .card-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .piece-card:hover .card-image img { transform: scale(1.04); }
+
+    /* SVG placeholder shown when no real image */
+    .card-image svg { width: 100%; height: 100%; display: block; }
+
+    /* ── CARD BODY ── */
+    .card-body { padding: 24px 26px 28px; }
+
+    .card-deity {
+      font-family: var(--font-head); font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-dk); margin-bottom: 6px;
+    }
+    .card-name {
+      font-family: var(--font-head); font-size: 1rem; letter-spacing: 0.05em;
+      color: var(--cream-lt); margin-bottom: 4px; line-height: 1.3;
+    }
+    .card-subtitle {
+      font-size: 0.9rem; font-style: italic; color: var(--muted); margin-bottom: 20px;
+    }
+
+    .card-meta { display: flex; gap: 20px; margin-bottom: 22px; flex-wrap: wrap; }
+    .card-meta-item { font-family: var(--font-head); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(155,147,184,0.6); }
+    .card-meta-item span { color: var(--muted); display: block; margin-top: 2px; }
+
+    .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid rgba(201,168,76,0.08); }
+    .card-price { font-family: var(--font-display); font-size: 1.4rem; color: var(--gold-lt); }
+    .card-price-note { font-size: 0.75rem; font-style: italic; color: var(--muted); margin-top: 2px; }
+
+    .btn-etsy {
+      font-family: var(--font-head); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink); background: linear-gradient(135deg, var(--gold-lt), var(--gold));
+      padding: 12px 22px; text-decoration: none; white-space: nowrap;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 16px rgba(201,168,76,0.2);
+    }
+    .btn-etsy:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(201,168,76,0.4); }
+    .btn-sold { font-family: var(--font-head); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); border: 1px solid rgba(155,147,184,0.2); padding: 12px 22px; }
+
+    /* ── COMMISSION BANNER ── */
+    .commission-banner {
+      margin: 0 0 80px;
+      padding: 48px 52px;
+      border: 1px solid rgba(201,168,76,0.2);
+      background: rgba(201,168,76,0.03);
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+      flex-wrap: wrap;
+      position: relative; z-index: 2;
+    }
+    .commission-banner::before {
+      content: '◈'; position: absolute; right: 52px; top: 50%; transform: translateY(-50%);
+      font-size: 6rem; color: var(--gold); opacity: 0.04; pointer-events: none;
+    }
+    .commission-text h3 { font-family: var(--font-head); font-size: 1.2rem; letter-spacing: 0.08em; color: var(--cream-lt); margin-bottom: 8px; }
+    .commission-text p { font-size: 1rem; font-style: italic; color: rgba(245,234,216,0.6); max-width: 520px; }
+    .btn-ghost {
+      font-family: var(--font-head); font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 14px 32px;
+      text-decoration: none; transition: all 0.25s; white-space: nowrap;
+    }
+    .btn-ghost:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+
+    /* ── SHIPPING INFO ── */
+    .shipping-strip {
+      padding: 28px 0;
+      border-top: 1px solid rgba(201,168,76,0.08);
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      background: rgba(201,168,76,0.02);
+      position: relative; z-index: 2;
+      margin-bottom: 80px;
+    }
+    .shipping-inner { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+    .ship-item { display: flex; align-items: center; gap: 12px; }
+    .ship-icon { font-size: 1.1rem; }
+    .ship-text { font-family: var(--font-head); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── EMPTY STATE ── */
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 80px 20px; }
+    .empty-state p { font-size: 1rem; font-style: italic; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer { padding: 52px 0 36px; position: relative; z-index: 2; text-align: center; border-top: 1px solid rgba(201,168,76,0.08); }
+    .footer-brand { font-family: var(--font-display); font-size: 1.2rem; color: var(--gold); margin-bottom: 10px; }
+    .footer-tagline { font-size: 0.85rem; font-style: italic; color: var(--muted); margin-bottom: 28px; }
+    .footer-links { display: flex; gap: 28px; justify-content: center; list-style: none; margin-bottom: 32px; }
+    .footer-links a { font-family: var(--font-head); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.72rem; color: rgba(155,147,184,0.35); font-family: var(--font-head); letter-spacing: 0.1em; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) { .shop-grid { grid-template-columns: repeat(2, 1fr); } .nav-links { display: none; } }
+    @media (max-width: 600px) {
+      .shop-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 20px; }
+      .commission-banner { padding: 36px 28px; }
+      .filter-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="container inner">
+      <a href="index.html" class="nav-brand">Bindutatva</a>
+      <ul class="nav-links">
+        <li><a href="index.html#philosophy">Philosophy</a></li>
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="nav-cta">View on Etsy</a>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HEADER ── -->
+  <header class="page-header">
+    <p class="page-eyebrow">Original Works · One of a Kind</p>
+    <h1 class="page-title">The Collection</h1>
+    <p class="page-sub">Each yantra is drawn once and exists once. When a piece finds its collector, it is theirs alone.</p>
+  </header>
+
+  <!-- ── SHIPPING STRIP ── -->
+  <div class="shipping-strip">
+    <div class="container shipping-inner">
+      <div class="ship-item"><span class="ship-icon">✦</span><span class="ship-text">Ships worldwide from Pune, India</span></div>
+      <div class="ship-item"><span class="ship-icon">✦</span><span class="ship-text">400 GSM archival paper</span></div>
+      <div class="ship-item"><span class="ship-icon">✦</span><span class="ship-text">Certificate of authenticity included</span></div>
+      <div class="ship-item"><span class="ship-icon">✦</span><span class="ship-text">Flat archival packaging · 30×30 cm</span></div>
+    </div>
+  </div>
+
+  <!-- ── FILTER BAR ── -->
+  <div class="filter-bar">
+    <div class="container filter-inner">
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <span class="filter-label">Filter</span>
+        <div class="filter-pills">
+          <button class="pill active" data-filter="all">All Works</button>
+          <button class="pill" data-filter="available">Available</button>
+          <button class="pill" data-filter="sold">Sold</button>
+          <button class="pill" data-filter="commission">Commission</button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="piece-count" id="piece-count">8 works</span>
+        <select class="sort-select" id="sort-select">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN SHOP ── -->
+  <section class="shop-section">
+    <div class="container">
+
+      <!-- Commission Banner -->
+      <div class="commission-banner reveal">
+        <div class="commission-text">
+          <h3>Commission a Yantra</h3>
+          <p>Every yantra can be drawn with a specific deity, purpose, or intention. Commissions take 3–4 weeks and are priced individually. Message on Etsy to begin.</p>
+        </div>
+        <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-ghost">Enquire on Etsy →</a>
+      </div>
+
+      <!-- ── PIECE GRID ── -->
+      <!--
+        HOW TO ADD A NEW PIECE (read this Namita / future dev):
+        1. Copy one entire <article class="piece-card"> block below
+        2. Paste it at the end of the grid, before the closing </div>
+        3. Update: data-price, data-status, card-deity, card-name, card-subtitle, card-price, btn-etsy href
+        4. Replace the <svg> placeholder with: <img src="assets/images/your-photo.jpg" alt="Yantra name" />
+        5. If sold: change data-status="sold", replace btn-etsy with btn-sold span, add badge-sold div
+      -->
+      <div class="shop-grid" id="shop-grid">
+
+        <!-- ── PIECE 1: Sri Yantra ── -->
+        <article class="piece-card reveal" data-status="available" data-price="24500">
+          <div class="card-image">
+            <div class="badge-new">New</div>
+            <!--
+              REPLACE THIS SVG with a real photo:
+              <img src="assets/images/sri-yantra-navayoni.jpg" alt="Sri Yantra Navayoni original artwork by Bindutatva" />
+            -->
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="background:#14122b;">
+              <g transform="translate(200,200)" fill="none">
+                <rect x="-165" y="-165" width="330" height="330" stroke="#c9a84c" stroke-width="0.6" opacity="0.3"/>
+                <rect x="-155" y="-155" width="310" height="310" stroke="#c9a84c" stroke-width="0.3" opacity="0.15"/>
+                <line x1="-165" y1="-24" x2="-182" y2="-24" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+                <line x1="-165" y1="24"  x2="-182" y2="24"  stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+                <line x1="165"  y1="-24" x2="182"  y2="-24" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+                <line x1="165"  y1="24"  x2="182"  y2="24"  stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+                <line x1="-24" y1="-165" x2="-24" y2="-182" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+                <line x1="24"  y1="-165" x2="24"  y2="-182" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+                <line x1="-24" y1="165"  x2="-24" y2="182"  stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+                <line x1="24"  y1="165"  x2="24"  y2="182"  stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+                <circle r="138" stroke="#c9a84c" stroke-width="0.4" opacity="0.25"/>
+                <g stroke="#c9a84c" opacity="0.5">
+                  <g id="p1l"><ellipse cx="0" cy="-122" rx="8" ry="20" stroke-width="0.7"/></g>
+                  <use href="#p1l" transform="rotate(22.5)"/>  <use href="#p1l" transform="rotate(45)"/>
+                  <use href="#p1l" transform="rotate(67.5)"/>  <use href="#p1l" transform="rotate(90)"/>
+                  <use href="#p1l" transform="rotate(112.5)"/> <use href="#p1l" transform="rotate(135)"/>
+                  <use href="#p1l" transform="rotate(157.5)"/> <use href="#p1l" transform="rotate(180)"/>
+                  <use href="#p1l" transform="rotate(202.5)"/> <use href="#p1l" transform="rotate(225)"/>
+                  <use href="#p1l" transform="rotate(247.5)"/> <use href="#p1l" transform="rotate(270)"/>
+                  <use href="#p1l" transform="rotate(292.5)"/> <use href="#p1l" transform="rotate(315)"/>
+                  <use href="#p1l" transform="rotate(337.5)"/>
+                </g>
+                <circle r="100" stroke="#c9a84c" stroke-width="0.3" opacity="0.2"/>
+                <g stroke="#e8ca7a" opacity="0.55">
+                  <g id="p1s"><ellipse cx="0" cy="-88" rx="9" ry="22" stroke-width="0.8"/></g>
+                  <use href="#p1s" transform="rotate(45)"/>  <use href="#p1s" transform="rotate(90)"/>
+                  <use href="#p1s" transform="rotate(135)"/> <use href="#p1s" transform="rotate(180)"/>
+                  <use href="#p1s" transform="rotate(225)"/> <use href="#p1s" transform="rotate(270)"/>
+                  <use href="#p1s" transform="rotate(315)"/>
+                </g>
+                <circle r="68" stroke="#c9a84c" stroke-width="0.4" opacity="0.25"/>
+                <polygon points="0,-64 55.4,32 -55.4,32"  stroke="#e8ca7a" stroke-width="1"   opacity="0.65"/>
+                <polygon points="0,64  55.4,-32 -55.4,-32" stroke="#c9a84c" stroke-width="1"   opacity="0.6"/>
+                <polygon points="0,-48 41.6,24 -41.6,24"  stroke="#c9a84c" stroke-width="0.7" opacity="0.5"/>
+                <polygon points="0,52  45,-26 -45,-26"    stroke="#e8ca7a" stroke-width="0.7" opacity="0.48"/>
+                <polygon points="0,-34 29.4,17 -29.4,17"  stroke="#e8ca7a" stroke-width="0.8" opacity="0.55"/>
+                <polygon points="0,38  32.9,-19 -32.9,-19" stroke="#c9a84c" stroke-width="0.6" opacity="0.45"/>
+                <polygon points="0,-20 17.3,10 -17.3,10"  stroke="#c9a84c" stroke-width="0.6" opacity="0.45"/>
+                <polygon points="0,24  20.8,-12 -20.8,-12" stroke="#e8ca7a" stroke-width="0.5" opacity="0.4"/>
+                <circle r="12" stroke="#e8ca7a" stroke-width="0.8" opacity="0.72"/>
+                <circle r="3.5" fill="#e8ca7a" stroke="none" opacity="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-deity">Lalita Tripura Sundari</p>
+            <h2 class="card-name">Shri Yantra — Navayoni</h2>
+            <p class="card-subtitle">Nine interlocking triangles · 16-petal outer lotus</p>
+            <div class="card-meta">
+              <div class="card-meta-item">Medium<span>Archival ink</span></div>
+              <div class="card-meta-item">Paper<span>400 GSM</span></div>
+              <div class="card-meta-item">Size<span>30 × 30 cm</span></div>
+            </div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">₹24,500</div>
+                <div class="card-price-note">+ shipping · ships worldwide</div>
+              </div>
+              <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-etsy">Buy on Etsy</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PIECE 2: Kali Yantra ── -->
+        <article class="piece-card reveal" data-status="available" data-price="21000" style="transition-delay:0.1s;">
+          <div class="card-image">
+            <!-- <img src="assets/images/kali-yantra.jpg" alt="Kali Yantra original artwork by Bindutatva" /> -->
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="background:#10102a;">
+              <g transform="translate(200,200)" fill="none">
+                <circle r="150" stroke="#c9a84c" stroke-width="0.4" opacity="0.2"/>
+                <circle r="136" stroke="#c9a84c" stroke-width="0.3" opacity="0.15"/>
+                <g stroke="#e8ca7a" opacity="0.52">
+                  <g id="p2p"><ellipse cx="0" cy="-116" rx="10" ry="28" stroke-width="0.8"/></g>
+                  <use href="#p2p" transform="rotate(45)"/>  <use href="#p2p" transform="rotate(90)"/>
+                  <use href="#p2p" transform="rotate(135)"/> <use href="#p2p" transform="rotate(180)"/>
+                  <use href="#p2p" transform="rotate(225)"/> <use href="#p2p" transform="rotate(270)"/>
+                  <use href="#p2p" transform="rotate(315)"/>
+                </g>
+                <circle r="84" stroke="#c9a84c" stroke-width="0.4" opacity="0.25"/>
+                <polygon points="0,78   67.5,-39 -67.5,-39" stroke="#e8ca7a" stroke-width="1.1" opacity="0.68"/>
+                <polygon points="0,-68  58.9,34  -58.9,34"  stroke="#c9a84c" stroke-width="0.9" opacity="0.52"/>
+                <polygon points="0,50   43.3,-25 -43.3,-25" stroke="#e8ca7a" stroke-width="0.8" opacity="0.5"/>
+                <polygon points="0,-44  38.1,22  -38.1,22"  stroke="#c9a84c" stroke-width="0.7" opacity="0.44"/>
+                <polygon points="0,30   26,-15   -26,-15"   stroke="#e8ca7a" stroke-width="0.7" opacity="0.48"/>
+                <circle r="22" stroke="#e8ca7a" stroke-width="0.7" opacity="0.5"/>
+                <circle cx="0"   cy="-22" r="2.5" fill="#c9a84c" opacity="0.65"/>
+                <circle cx="22"  cy="0"   r="2.5" fill="#c9a84c" opacity="0.65"/>
+                <circle cx="0"   cy="22"  r="2.5" fill="#c9a84c" opacity="0.65"/>
+                <circle cx="-22" cy="0"   r="2.5" fill="#c9a84c" opacity="0.65"/>
+                <circle r="4" fill="#e8ca7a" stroke="none" opacity="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-deity">Kali Ma</p>
+            <h2 class="card-name">Kali Yantra — Shakti Rupa</h2>
+            <p class="card-subtitle">Downward triangle dominant · 8-petal lotus</p>
+            <div class="card-meta">
+              <div class="card-meta-item">Medium<span>Archival ink</span></div>
+              <div class="card-meta-item">Paper<span>400 GSM</span></div>
+              <div class="card-meta-item">Size<span>30 × 30 cm</span></div>
+            </div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">₹21,000</div>
+                <div class="card-price-note">+ shipping · ships worldwide</div>
+              </div>
+              <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-etsy">Buy on Etsy</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PIECE 3: Ganesha Yantra ── -->
+        <article class="piece-card reveal" data-status="available" data-price="18500" style="transition-delay:0.2s;">
+          <div class="card-image">
+            <!-- <img src="assets/images/ganesha-yantra.jpg" alt="Ganesha Yantra original artwork by Bindutatva" /> -->
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="background:#131230;">
+              <g transform="translate(200,200)" fill="none">
+                <rect x="-150" y="-150" width="300" height="300" stroke="#c9a84c" stroke-width="0.5" opacity="0.22"/>
+                <rect x="-138" y="-138" width="276" height="276" stroke="#c9a84c" stroke-width="0.3" opacity="0.12"/>
+                <circle r="120" stroke="#c9a84c" stroke-width="0.3" opacity="0.18"/>
+                <g stroke="#e8ca7a" opacity="0.52">
+                  <g id="p3p"><ellipse cx="0" cy="-100" rx="10" ry="26" stroke-width="0.8"/></g>
+                  <use href="#p3p" transform="rotate(60)"/>  <use href="#p3p" transform="rotate(120)"/>
+                  <use href="#p3p" transform="rotate(180)"/> <use href="#p3p" transform="rotate(240)"/>
+                  <use href="#p3p" transform="rotate(300)"/>
+                </g>
+                <circle r="70" stroke="#c9a84c" stroke-width="0.4" opacity="0.28"/>
+                <polygon points="0,-64 55.4,32  -55.4,32"  stroke="#e8ca7a" stroke-width="1"   opacity="0.65"/>
+                <polygon points="0,64  55.4,-32 -55.4,-32" stroke="#c9a84c" stroke-width="1"   opacity="0.6"/>
+                <polygon points="0,-42 36.4,21  -36.4,21"  stroke="#c9a84c" stroke-width="0.7" opacity="0.45"/>
+                <polygon points="0,42  36.4,-21 -36.4,-21" stroke="#e8ca7a" stroke-width="0.7" opacity="0.42"/>
+                <circle r="24" stroke="#e8ca7a" stroke-width="0.6" opacity="0.45"/>
+                <circle r="4" fill="#e8ca7a" stroke="none" opacity="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-deity">Ganesha</p>
+            <h2 class="card-name">Ganesha Yantra — Siddhi Prada</h2>
+            <p class="card-subtitle">Six-petal lotus · interlocking hexagram</p>
+            <div class="card-meta">
+              <div class="card-meta-item">Medium<span>Archival ink</span></div>
+              <div class="card-meta-item">Paper<span>400 GSM</span></div>
+              <div class="card-meta-item">Size<span>30 × 30 cm</span></div>
+            </div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">₹18,500</div>
+                <div class="card-price-note">+ shipping · ships worldwide</div>
+              </div>
+              <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-etsy">Buy on Etsy</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PIECE 4: Lakshmi Yantra ── -->
+        <article class="piece-card reveal" data-status="available" data-price="22000" style="transition-delay:0.05s;">
+          <div class="card-image">
+            <!-- <img src="assets/images/lakshmi-yantra.jpg" alt="Lakshmi Yantra original artwork by Bindutatva" /> -->
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="background:#151230;">
+              <g transform="translate(200,200)" fill="none">
+                <circle r="155" stroke="#c9a84c" stroke-width="0.4" opacity="0.2"/>
+                <g stroke="#c9a84c" opacity="0.45">
+                  <g id="p4p"><ellipse cx="0" cy="-132" rx="9" ry="22" stroke-width="0.7"/></g>
+                  <use href="#p4p" transform="rotate(22.5)"/>  <use href="#p4p" transform="rotate(45)"/>
+                  <use href="#p4p" transform="rotate(67.5)"/>  <use href="#p4p" transform="rotate(90)"/>
+                  <use href="#p4p" transform="rotate(112.5)"/> <use href="#p4p" transform="rotate(135)"/>
+                  <use href="#p4p" transform="rotate(157.5)"/> <use href="#p4p" transform="rotate(180)"/>
+                  <use href="#p4p" transform="rotate(202.5)"/> <use href="#p4p" transform="rotate(225)"/>
+                  <use href="#p4p" transform="rotate(247.5)"/> <use href="#p4p" transform="rotate(270)"/>
+                  <use href="#p4p" transform="rotate(292.5)"/> <use href="#p4p" transform="rotate(315)"/>
+                  <use href="#p4p" transform="rotate(337.5)"/>
+                </g>
+                <circle r="98" stroke="#c9a84c" stroke-width="0.3" opacity="0.18"/>
+                <g stroke="#e8ca7a" opacity="0.5">
+                  <g id="p4s"><ellipse cx="0" cy="-82" rx="9" ry="21" stroke-width="0.8"/></g>
+                  <use href="#p4s" transform="rotate(45)"/>  <use href="#p4s" transform="rotate(90)"/>
+                  <use href="#p4s" transform="rotate(135)"/> <use href="#p4s" transform="rotate(180)"/>
+                  <use href="#p4s" transform="rotate(225)"/> <use href="#p4s" transform="rotate(270)"/>
+                  <use href="#p4s" transform="rotate(315)"/>
+                </g>
+                <circle r="58" stroke="#c9a84c" stroke-width="0.4" opacity="0.25"/>
+                <polygon points="0,-54 46.8,27 -46.8,27"  stroke="#e8ca7a" stroke-width="0.9" opacity="0.6"/>
+                <polygon points="0,54  46.8,-27 -46.8,-27" stroke="#c9a84c" stroke-width="0.9" opacity="0.55"/>
+                <polygon points="0,-34 29.4,17 -29.4,17"  stroke="#c9a84c" stroke-width="0.6" opacity="0.45"/>
+                <polygon points="0,34  29.4,-17 -29.4,-17" stroke="#e8ca7a" stroke-width="0.6" opacity="0.42"/>
+                <circle r="16" stroke="#e8ca7a" stroke-width="0.7" opacity="0.65"/>
+                <circle r="3.5" fill="#e8ca7a" stroke="none" opacity="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-deity">Lakshmi</p>
+            <h2 class="card-name">Lakshmi Yantra — Shri Sampat</h2>
+            <p class="card-subtitle">16-petal lotus · dual triangle core</p>
+            <div class="card-meta">
+              <div class="card-meta-item">Medium<span>Archival ink</span></div>
+              <div class="card-meta-item">Paper<span>400 GSM</span></div>
+              <div class="card-meta-item">Size<span>30 × 30 cm</span></div>
+            </div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">₹22,000</div>
+                <div class="card-price-note">+ shipping · ships worldwide</div>
+              </div>
+              <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-etsy">Buy on Etsy</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PIECE 5: Saraswati Yantra ── -->
+        <article class="piece-card reveal" data-status="available" data-price="19500" style="transition-delay:0.15s;">
+          <div class="card-image">
+            <!-- <img src="assets/images/saraswati-yantra.jpg" alt="Saraswati Yantra original artwork by Bindutatva" /> -->
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="background:#0f1028;">
+              <g transform="translate(200,200)" fill="none">
+                <rect x="-148" y="-148" width="296" height="296" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
+                <circle r="130" stroke="#c9a84c" stroke-width="0.3" opacity="0.18"/>
+                <g stroke="#e8ca7a" opacity="0.48">
+                  <g id="p5p"><ellipse cx="0" cy="-108" rx="9" ry="24" stroke-width="0.7"/></g>
+                  <use href="#p5p" transform="rotate(45)"/>  <use href="#p5p" transform="rotate(90)"/>
+                  <use href="#p5p" transform="rotate(135)"/> <use href="#p5p" transform="rotate(180)"/>
+                  <use href="#p5p" transform="rotate(225)"/> <use href="#p5p" transform="rotate(270)"/>
+                  <use href="#p5p" transform="rotate(315)"/>
+                </g>
+                <circle r="78" stroke="#c9a84c" stroke-width="0.4" opacity="0.22"/>
+                <!-- Saraswati: upward triangle with subtle inner star -->
+                <polygon points="0,-70 60.6,35 -60.6,35"  stroke="#e8ca7a" stroke-width="1" opacity="0.62"/>
+                <polygon points="0,70  60.6,-35 -60.6,-35" stroke="#c9a84c" stroke-width="1" opacity="0.55"/>
+                <polygon points="0,-46 39.8,23 -39.8,23"  stroke="#c9a84c" stroke-width="0.7" opacity="0.45"/>
+                <polygon points="0,46  39.8,-23 -39.8,-23" stroke="#e8ca7a" stroke-width="0.7" opacity="0.42"/>
+                <polygon points="0,-28 24.2,14 -24.2,14"  stroke="#e8ca7a" stroke-width="0.6" opacity="0.48"/>
+                <circle r="18" stroke="#e8ca7a" stroke-width="0.6" opacity="0.5"/>
+                <circle r="3.5" fill="#e8ca7a" stroke="none" opacity="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-deity">Saraswati</p>
+            <h2 class="card-name">Saraswati Yantra — Vidya Prada</h2>
+            <p class="card-subtitle">Eight-petal lotus · triple triangle layering</p>
+            <div class="card-meta">
+              <div class="card-meta-item">Medium<span>Archival ink</span></div>
+              <div class="card-meta-item">Paper<span>400 GSM</span></div>
+              <div class="card-meta-item">Size<span>30 × 30 cm</span></div>
+            </div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">₹19,500</div>
+                <div class="card-price-note">+ shipping · ships worldwide</div>
+              </div>
+              <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-etsy">Buy on Etsy</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PIECE 6: Durga Yantra — SOLD ── -->
+        <article class="piece-card sold reveal" data-status="sold" data-price="23000" style="transition-delay:0.25s;">
+          <div class="card-image">
+            <div class="badge-sold">Sold</div>
+            <!-- <img src="assets/images/durga-yantra.jpg" alt="Durga Yantra by Bindutatva — sold" /> -->
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="background:#11102a;">
+              <g transform="translate(200,200)" fill="none">
+                <circle r="148" stroke="#c9a84c" stroke-width="0.4" opacity="0.18"/>
+                <g stroke="#c9a84c" opacity="0.38">
+                  <g id="p6p"><ellipse cx="0" cy="-126" rx="8" ry="21" stroke-width="0.6"/></g>
+                  <use href="#p6p" transform="rotate(22.5)"/>  <use href="#p6p" transform="rotate(45)"/>
+                  <use href="#p6p" transform="rotate(67.5)"/>  <use href="#p6p" transform="rotate(90)"/>
+                  <use href="#p6p" transform="rotate(112.5)"/> <use href="#p6p" transform="rotate(135)"/>
+                  <use href="#p6p" transform="rotate(157.5)"/> <use href="#p6p" transform="rotate(180)"/>
+                  <use href="#p6p" transform="rotate(202.5)"/> <use href="#p6p" transform="rotate(225)"/>
+                  <use href="#p6p" transform="rotate(247.5)"/> <use href="#p6p" transform="rotate(270)"/>
+                  <use href="#p6p" transform="rotate(292.5)"/> <use href="#p6p" transform="rotate(315)"/>
+                  <use href="#p6p" transform="rotate(337.5)"/>
+                </g>
+                <circle r="88" stroke="#c9a84c" stroke-width="0.3" opacity="0.18"/>
+                <polygon points="0,-80 69.3,40 -69.3,40"  stroke="#e8ca7a" stroke-width="0.9" opacity="0.5"/>
+                <polygon points="0,80  69.3,-40 -69.3,-40" stroke="#c9a84c" stroke-width="0.9" opacity="0.45"/>
+                <polygon points="0,-54 46.8,27 -46.8,27"  stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+                <polygon points="0,54  46.8,-27 -46.8,-27" stroke="#e8ca7a" stroke-width="0.7" opacity="0.38"/>
+                <circle r="20" stroke="#e8ca7a" stroke-width="0.6" opacity="0.45"/>
+                <circle r="3.5" fill="#c9a84c" stroke="none" opacity="0.7"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-deity">Durga</p>
+            <h2 class="card-name">Durga Yantra — Mahashakti</h2>
+            <p class="card-subtitle">16-petal outer · navayoni inner</p>
+            <div class="card-meta">
+              <div class="card-meta-item">Medium<span>Archival ink</span></div>
+              <div class="card-meta-item">Paper<span>400 GSM</span></div>
+              <div class="card-meta-item">Size<span>30 × 30 cm</span></div>
+            </div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">₹23,000</div>
+                <div class="card-price-note">This piece has found its collector</div>
+              </div>
+              <span class="btn-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PIECE 7: Surya Yantra ── -->
+        <article class="piece-card reveal" data-status="available" data-price="20500" style="transition-delay:0.1s;">
+          <div class="card-image">
+            <!-- <img src="assets/images/surya-yantra.jpg" alt="Surya Yantra original artwork by Bindutatva" /> -->
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="background:#16121a;">
+              <g transform="translate(200,200)" fill="none">
+                <circle r="152" stroke="#c9a84c" stroke-width="0.4" opacity="0.2"/>
+                <circle r="140" stroke="#c9a84c" stroke-width="0.2" opacity="0.12"/>
+                <!-- 12-petal lotus for Surya -->
+                <g stroke="#e8ca7a" opacity="0.5">
+                  <g id="p7p"><ellipse cx="0" cy="-120" rx="9" ry="25" stroke-width="0.8"/></g>
+                  <use href="#p7p" transform="rotate(30)"/>  <use href="#p7p" transform="rotate(60)"/>
+                  <use href="#p7p" transform="rotate(90)"/>  <use href="#p7p" transform="rotate(120)"/>
+                  <use href="#p7p" transform="rotate(150)"/> <use href="#p7p" transform="rotate(180)"/>
+                  <use href="#p7p" transform="rotate(210)"/> <use href="#p7p" transform="rotate(240)"/>
+                  <use href="#p7p" transform="rotate(270)"/> <use href="#p7p" transform="rotate(300)"/>
+                  <use href="#p7p" transform="rotate(330)"/>
+                </g>
+                <circle r="88" stroke="#c9a84c" stroke-width="0.4" opacity="0.22"/>
+                <!-- Surya: upward single triangle + rays -->
+                <polygon points="0,-76 65.8,38 -65.8,38"  stroke="#e8ca7a" stroke-width="1"   opacity="0.65"/>
+                <polygon points="0,60  52,-30  -52,-30"   stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <polygon points="0,-46 39.8,23 -39.8,23"  stroke="#c9a84c" stroke-width="0.6" opacity="0.42"/>
+                <!-- Radial ray lines for Surya -->
+                <g stroke="#c9a84c" stroke-width="0.4" opacity="0.2">
+                  <line x1="0" y1="-88" x2="0" y2="-152"/>
+                  <line x1="76.2" y1="44" x2="131.7" y2="76"/>
+                  <line x1="-76.2" y1="44" x2="-131.7" y2="76"/>
+                </g>
+                <circle r="18" stroke="#e8ca7a" stroke-width="0.7" opacity="0.6"/>
+                <circle r="3.5" fill="#e8ca7a" stroke="none" opacity="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-deity">Surya</p>
+            <h2 class="card-name">Surya Yantra — Aditya</h2>
+            <p class="card-subtitle">12-petal lotus · solar triangle with rays</p>
+            <div class="card-meta">
+              <div class="card-meta-item">Medium<span>Archival ink</span></div>
+              <div class="card-meta-item">Paper<span>400 GSM</span></div>
+              <div class="card-meta-item">Size<span>30 × 30 cm</span></div>
+            </div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">₹20,500</div>
+                <div class="card-price-note">+ shipping · ships worldwide</div>
+              </div>
+              <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-etsy">Buy on Etsy</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PIECE 8: Commission Placeholder ── -->
+        <article class="piece-card reveal" data-status="commission" data-price="25000" style="transition-delay:0.2s;">
+          <div class="card-image" style="display:flex;align-items:center;justify-content:center;background:#1a1730;">
+            <div style="text-align:center;padding:40px;">
+              <div style="font-size:3rem;margin-bottom:16px;color:rgba(201,168,76,0.4);">◈</div>
+              <p style="font-family:var(--font-head);font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,168,76,0.5);">Commission Available</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-deity">Your Choice of Deity</p>
+            <h2 class="card-name">Bespoke Yantra — Commission</h2>
+            <p class="card-subtitle">Drawn to your intention · 3–4 week lead time</p>
+            <div class="card-meta">
+              <div class="card-meta-item">Medium<span>Archival ink</span></div>
+              <div class="card-meta-item">Paper<span>400 GSM</span></div>
+              <div class="card-meta-item">Size<span>30 × 30 cm</span></div>
+            </div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">From ₹18,000</div>
+                <div class="card-price-note">Price depends on complexity</div>
+              </div>
+              <a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener" class="btn-etsy">Enquire</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+      <!-- END shop-grid -->
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <p class="footer-brand">Bindutatva</p>
+      <p class="footer-tagline">The Essence of the Sacred Dot · Handmade Yantra Art · India</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="https://www.etsy.com/shop/bindutatva" target="_blank" rel="noopener">Etsy</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <div class="divider-full" style="margin-bottom:24px;"></div>
+      <p class="footer-copy">© 2025 Bindutatva · All artworks original and hand-drawn · All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- ── FILTER + SORT JS ── -->
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Filter pills
+    const pills    = document.querySelectorAll('.pill');
+    const cards    = document.querySelectorAll('.piece-card');
+    const countEl  = document.getElementById('piece-count');
+    const sortSel  = document.getElementById('sort-select');
+    const grid     = document.getElementById('shop-grid');
+
+    let currentFilter = 'all';
+
+    function applyFilter(filter) {
+      currentFilter = filter;
+      let visible = 0;
+      cards.forEach(card => {
+        const status = card.dataset.status;
+        const show = filter === 'all' || status === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      countEl.textContent = visible + (visible === 1 ? ' work' : ' works');
+    }
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        applyFilter(pill.dataset.filter);
+      });
+    });
+
+    // Sort
+    sortSel.addEventListener('change', () => {
+      const val = sortSel.value;
+      const cardArr = [...cards].filter(c => c.style.display !== 'none');
+      cardArr.sort((a, b) => {
+        const pa = parseInt(a.dataset.price);
+        const pb = parseInt(b.dataset.price);
+        if (val === 'price-asc')  return pa - pb;
+        if (val === 'price-desc') return pb - pa;
+        return 0;
+      });
+      cardArr.forEach(c => grid.appendChild(c));
+    });
+  </script>
+
+</body>
+</html>
