@@ -120,11 +120,10 @@
       box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 32px rgba(201,168,76,0.07);
     }
     .piece-card.sold { opacity: 0.5; }
-    .piece-card-featured { grid-column: span 2; }
-    .piece-card-featured .card-image { aspect-ratio: 2/1; }
+    /* featured class removed — all cards now uniform */
 
     .card-image {
-      position: relative; aspect-ratio: 1;
+      position: relative; aspect-ratio: 3/4;
       overflow: hidden;
       background: var(--mid);
     }
@@ -259,25 +258,8 @@
     .detail-close:hover { color: var(--gold); }
 
     .detail-inner {
-      max-width: 960px; margin: 80px auto 60px; padding: 0 40px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-      align-items: start;
+      max-width: 600px; margin: 80px auto 60px; padding: 0 40px;
     }
-
-    .detail-gallery { position: sticky; top: 100px; }
-    .detail-main-img {
-      width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
-      border: 1px solid rgba(201,168,76,0.15);
-      background: var(--mid);
-    }
-    .detail-main-img svg { width: 100%; height: 100%; display: block; }
-    .detail-thumbs { display: flex; gap: 10px; margin-top: 12px; }
-    .detail-thumb {
-      width: 64px; height: 64px; object-fit: cover; cursor: pointer;
-      border: 1px solid rgba(201,168,76,0.15); opacity: 0.5;
-      transition: opacity 0.25s, border-color 0.25s;
-    }
-    .detail-thumb:hover, .detail-thumb.active { opacity: 1; border-color: var(--gold); }
 
     .detail-info { padding-top: 8px; }
     .detail-deity {
@@ -321,8 +303,7 @@
     .detail-price-note { font-size: 0.8rem; font-style: italic; color: var(--muted); margin-top: 4px; }
 
     @media (max-width: 768px) {
-      .detail-inner { grid-template-columns: 1fr; gap: 32px; margin-top: 60px; }
-      .detail-gallery { position: static; }
+      .detail-inner { margin-top: 60px; }
       .detail-name { font-size: 1.3rem; }
     }
 
@@ -334,8 +315,7 @@
     @media (max-width: 960px) { .shop-grid { grid-template-columns: repeat(2, 1fr); } .nav-links { display: none; } }
     @media (max-width: 600px) {
       .shop-grid { grid-template-columns: 1fr; }
-      .piece-card-featured { grid-column: span 1; }
-      .piece-card-featured .card-image { aspect-ratio: 1; }
+      /* all cards uniform */
       .container { padding: 0 20px; }
       .commission-banner { padding: 36px 28px; }
       .filter-inner { flex-direction: column; align-items: flex-start; }
@@ -424,7 +404,7 @@
       <div class="shop-grid" id="shop-grid">
 
         <!-- ── PIECE 1: Sri Yantra (featured — spans 2 columns) ── -->
-        <article class="piece-card piece-card-featured reveal" data-status="available" data-price="21000" data-artwork="Sri Yantra">
+        <article class="piece-card reveal" data-status="available" data-price="21000" data-artwork="Sri Yantra">
           <div class="card-image">
             <div class="badge-new">New</div>
             <img src="assets/images/shree-yantra.jpg" alt="Shri Yantra original artwork by Namita Pal — Bindutatva" style="width:100%;height:100%;object-fit:cover;" />
@@ -467,7 +447,7 @@
                 <div class="card-price">₹21,000</div>
                 <div class="card-price-note">₹25,000 incl. shipping &amp; GST</div>
               </div>
-              <span class="btn-buy">Buy Now</span>
+              <div id='product-component-ganesha' style="width:100%;"></div>
             </div>
           </div>
         </article>
@@ -491,7 +471,7 @@
                 <div class="card-price">₹21,000</div>
                 <div class="card-price-note">₹25,000 incl. shipping &amp; GST</div>
               </div>
-              <span class="btn-buy">Buy Now</span>
+              <div id='product-component-lakshmi' style="width:100%;"></div>
             </div>
           </div>
         </article>
@@ -557,9 +537,6 @@
   <div class="detail-overlay" id="detail-overlay">
     <button class="detail-close" id="detail-close" aria-label="Close">&times;</button>
     <div class="detail-inner">
-      <div class="detail-gallery">
-        <div class="detail-main-img" id="detail-main-img"></div>
-      </div>
       <div class="detail-info">
         <p class="detail-deity" id="detail-deity"></p>
         <h2 class="detail-name" id="detail-name"></h2>
@@ -690,22 +667,6 @@
       document.getElementById('detail-name').textContent     = card.querySelector('.card-name').textContent;
       document.getElementById('detail-subtitle').textContent = card.querySelector('.card-subtitle').textContent;
 
-      // Main image — clone the card's image content
-      const mainImg = document.getElementById('detail-main-img');
-      mainImg.innerHTML = '';
-      const cardImg = card.querySelector('.card-image');
-      const imgEl   = cardImg.querySelector('img');
-      const svgEl   = cardImg.querySelector('svg');
-      if (imgEl) {
-        const clone = imgEl.cloneNode(true);
-        clone.style.width = '100%';
-        clone.style.height = '100%';
-        clone.style.objectFit = 'cover';
-        mainImg.appendChild(clone);
-      } else if (svgEl) {
-        mainImg.appendChild(svgEl.cloneNode(true));
-      }
-
       // Story
       document.getElementById('detail-story').innerHTML = '<p>' + data.story + '</p>';
 
@@ -765,7 +726,7 @@
     });
   </script>
 
-<div id='product-component-1774181963727' style="width:100%;max-width:900px;margin:40px auto;"></div>
+<div id='product-component-1774181963727' style="width:100%;"></div>
 <script type="text/javascript">
 /*<![CDATA[*/
 (function () {
@@ -786,17 +747,50 @@
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
     script.onload = ShopifyBuyInit;
   }
+  var btnStyles = {
+    "background-color": "#c9a84c",
+    "color": "#0d0c1a",
+    "font-family": "'Cinzel', serif",
+    "letter-spacing": "0.2em",
+    "text-transform": "uppercase",
+    "padding": "14px 28px",
+    "border": "none",
+    "width": "100%",
+    "font-size": "0.62rem"
+  };
+  var productOpts = {
+    "product": {
+      "styles": {
+        "product": {"@media (min-width: 601px)": {"max-width": "100%", "margin-left": "0", "margin-bottom": "0"}},
+        "button": btnStyles
+      },
+      "text": {"button": "BUY NOW"},
+      "contents": {"img": false, "title": false, "price": false}
+    },
+    "cart": {"text": {"total": "Subtotal", "button": "Checkout"}},
+    "toggle": {}
+  };
   function ShopifyBuyInit() {
     var client = ShopifyBuy.buildClient({
       domain: 'pqwrgv-21.myshopify.com',
       storefrontAccessToken: 'b137c6c7d79eed401d6efe1280c6d568',
     });
     ShopifyBuy.UI.onReady(client).then(function (ui) {
-      ui.createComponent('product', {
-        id: '7828059684950',
-        node: document.getElementById('product-component-1774181963727'),
-        moneyFormat: 'Rs.%20%7B%7Bamount%7D%7D',
-        options: {"product":{"styles":{"product":{"@media (min-width: 601px)":{"max-width":"100%","margin-left":"0","margin-bottom":"50px"}},"img":{"width":"100%","max-width":"900px"}},"text":{"button":"Buy Now"}},"cart":{"text":{"total":"Subtotal","button":"Checkout"}},"toggle":{}}
+      var targets = [
+        { id: '7828059684950', node: 'product-component-1774181963727' },
+        { id: '7828059684950', node: 'product-component-ganesha' },
+        { id: '7828059684950', node: 'product-component-lakshmi' }
+      ];
+      targets.forEach(function (t) {
+        var el = document.getElementById(t.node);
+        if (el) {
+          ui.createComponent('product', {
+            id: t.id,
+            node: el,
+            moneyFormat: 'Rs.%20%7B%7Bamount%7D%7D',
+            options: productOpts
+          });
+        }
       });
     });
   }
