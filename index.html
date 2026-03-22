@@ -201,6 +201,20 @@
     .quote-author { font-family: var(--font-head); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
     .quote-loc { color: var(--muted); font-style: italic; font-size: 0.9rem; }
 
+    /* ABOUT THE ARTIST */
+    .artist { padding: 100px 0 120px; position: relative; z-index: 2; }
+    .artist-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; align-items: center; }
+    .artist-photo-wrap { position: relative; }
+    .artist-photo-wrap img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border: 1px solid rgba(201,168,76,0.2); filter: grayscale(20%) contrast(1.05); }
+    .artist-photo-wrap::after { content: ''; position: absolute; inset: 12px -12px -12px 12px; border: 1px solid rgba(201,168,76,0.15); z-index: -1; }
+    .artist-content .section-label, .artist-content .section-title { text-align: left; }
+    .artist-name { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--gold-lt); margin-bottom: 8px; letter-spacing: 0.06em; }
+    .artist-role { font-family: var(--font-head); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+    .artist-body { color: rgba(245,234,216,0.72); font-size: 1.05rem; line-height: 1.9; font-style: italic; }
+    .artist-body p { margin-bottom: 20px; }
+    .artist-body p:last-child { margin-bottom: 0; }
+    .artist-signature { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); margin-top: 36px; letter-spacing: 0.08em; }
+
     /* CTA */
     .cta-band { padding: 100px 0; text-align: center; position: relative; z-index: 2; border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); background: linear-gradient(180deg, rgba(201,168,76,0.03) 0%, transparent 100%); }
     .cta-band .section-title { margin-bottom: 16px; }
@@ -223,6 +237,7 @@
     @media (max-width: 900px) {
       .philosophy-grid, .pricing-cards { grid-template-columns: 1fr; gap: 2px; }
       .process-inner { grid-template-columns: 1fr; }
+      .artist-inner { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       .quote-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
@@ -241,6 +256,7 @@
         <li><a href="shop.html">Shop</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#artist">Artist</a></li>
       </ul>
       <a href="shop.html" class="nav-cta">Browse Collection</a>
     </div>
@@ -637,6 +653,30 @@
     </div>
   </section>
 
+  <!-- ABOUT THE ARTIST -->
+  <section class="artist" id="artist" aria-labelledby="artist-heading">
+    <div class="container">
+      <div class="artist-inner">
+        <div class="artist-photo-wrap reveal">
+          <img src="assets/images/namita-pal.jpg" alt="Namita Pal — Yantra artist and founder of Bindutatva" loading="lazy" />
+        </div>
+        <div class="artist-content">
+          <p class="section-label reveal">The Artist</p>
+          <h2 id="artist-heading" class="section-title reveal">Meet Namita Pal</h2>
+          <div class="divider reveal" style="margin:20px 0 32px;margin-left:0;"></div>
+          <p class="artist-role reveal">Founder &amp; Artist, Bindutatva</p>
+          <div class="artist-body reveal">
+            <p>Yantras found me before I found them. What began as a quiet fascination with sacred geometry slowly became a calling — a way to still the mind, honour an ancient lineage, and create something that carries real energy into a living space.</p>
+            <p>I was drawn to yantras because they sit at the intersection of mathematics, devotion, and art. Every triangle, every circle, every petal follows rules that are thousands of years old, yet drawing them by hand demands absolute presence. There is no room for distraction — only the line, the breath, and the intention behind it.</p>
+            <p>For me, creating a yantra is not illustration; it is meditation made visible. Each piece takes days of careful, deliberate work on heavy archival paper, building layer upon layer of ink until the geometry hums with the precision the tradition demands.</p>
+            <p>My hope is simple: that every yantra that leaves my studio becomes a still point in someone's home — a reminder that the sacred can be geometric, that devotion can be drawn, and that something handmade with intention carries a presence no print ever could.</p>
+          </div>
+          <p class="artist-signature reveal">— Namita</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-band" aria-labelledby="cta-heading">
     <div class="container">
@@ -659,6 +699,7 @@
         <li><a href="#gallery">Collection</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#artist">Artist</a></li>
       </ul>
       <div class="divider-full" style="margin-bottom:28px;"></div>
       <p class="footer-copy">© 2025 Bindutatva · All artworks are original and hand-drawn by the artist · All rights reserved</p>
